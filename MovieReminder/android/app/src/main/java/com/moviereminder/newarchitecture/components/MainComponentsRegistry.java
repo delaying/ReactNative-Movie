@@ -1,4 +1,4 @@
-package com.moviereminder.newarchitecture.components;
+package com.delaying.movieapp.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
