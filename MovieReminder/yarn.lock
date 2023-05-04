@@ -5571,6 +5571,11 @@
   dependencies:
     "mimic-fn" "^2.1.0"
 
+"open-color@^1.9.1":
+  "integrity" "sha512-vCseG/EQ6/RcvxhUcGJiHViOgrtz4x0XbZepXvKik66TMGkvbmjeJrKFyBEx6daG5rNyyd14zYXhz0hZVwQFOw=="
+  "resolved" "https://registry.npmjs.org/open-color/-/open-color-1.9.1.tgz"
+  "version" "1.9.1"
+
 "open@^6.2.0":
   "integrity" "sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg=="
   "resolved" "https://registry.npmjs.org/open/-/open-6.4.0.tgz"
