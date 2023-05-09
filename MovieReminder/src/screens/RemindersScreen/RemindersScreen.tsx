@@ -1,9 +1,16 @@
 import React from 'react';
 import useReminder from '../../hooks/useReminder';
 import Screen from '../../components/Screen';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from 'open-color';
 import moment from 'moment';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
   reminderList: {
@@ -14,6 +21,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     borderColor: Colors.gray[6],
+    flexDirection: 'row',
   },
   titleText: {
     fontSize: 18,
@@ -25,6 +33,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.white,
   },
+  textContainer: {
+    flex: 1,
+  },
   timestampText: {
     marginTop: 2,
     fontSize: 14,
@@ -33,10 +44,18 @@ const styles = StyleSheet.create({
   separator: {
     height: 8,
   },
+  removeReminderContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  removeReminderIcon: {
+    color: Colors.white,
+    fontSize: 24,
+  },
 });
 
 const RemindersScreen = () => {
-  const { reminders } = useReminder();
+  const { reminders, removeReminder } = useReminder();
 
   return (
     <Screen>
@@ -46,12 +65,29 @@ const RemindersScreen = () => {
         renderItem={({ item: reminder }) => {
           return (
             <View style={styles.reminderItem}>
-              <Text style={styles.titleText}>{reminder.notification.body}</Text>
-              {'timestamp' in reminder.trigger && (
-                <Text style={styles.timestampText}>
-                  {moment(reminder.trigger.timestamp).format('LLL')}
+              <View style={styles.textContainer}>
+                <Text style={styles.titleText}>
+                  {reminder.notification.body}
                 </Text>
-              )}
+                {'timestamp' in reminder.trigger && (
+                  <Text style={styles.timestampText}>
+                    {moment(reminder.trigger.timestamp).format('LLL')}
+                  </Text>
+                )}
+              </View>
+              <View style={styles.removeReminderContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    if (reminder.notification.id != null) {
+                      removeReminder(reminder.notification.id);
+                    }
+                  }}>
+                  <Icon
+                    style={styles.removeReminderIcon}
+                    name="notifications-off"
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           );
         }}
