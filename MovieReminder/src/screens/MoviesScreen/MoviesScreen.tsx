@@ -1,17 +1,15 @@
 import React from 'react';
 import useMovies from './useMovies';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   ActivityIndicator,
   FlatList,
-  Platform,
   RefreshControl,
-  StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
 import Movie from './Movie';
 import Colors from 'open-color';
+import Screen from '../../components/Screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,14 +33,7 @@ export default () => {
   const { movies, isLoading, loadMore, canLoadMore, refresh } = useMovies();
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* ios는 어두운 배경 사용시 상단바 색을 바꿔주어야함 */}
-      {Platform.OS === 'ios' ? (
-        <StatusBar barStyle="light-content" />
-      ) : (
-        <StatusBar barStyle="dark-content" />
-      )}
-
+    <Screen headerVisible={false}>
       {isLoading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator />
@@ -54,6 +45,7 @@ export default () => {
           data={movies}
           renderItem={({ item: movie }) => (
             <Movie
+              id={movie.id}
               title={movie.title}
               originalTitle={movie.originalTitle}
               releaseDate={movie.releaseDate}
@@ -77,6 +69,6 @@ export default () => {
           }
         />
       )}
-    </SafeAreaView>
+    </Screen>
   );
 };
