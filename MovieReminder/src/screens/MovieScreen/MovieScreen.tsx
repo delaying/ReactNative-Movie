@@ -20,6 +20,7 @@ import People from './People';
 import YouTubeVideo from './YouTubeVideo';
 import CalendarModule from '../../modules/CalendarModule';
 import moment from 'moment';
+import useReminder from '../../hooks/useReminder';
 
 const styles = StyleSheet.create({
   loadingContainer: {
@@ -88,6 +89,7 @@ export default () => {
   } = useRoute<RouteProp<RootStackParamList, 'Movie'>>();
 
   const { movie, isLoading } = useMovie({ id });
+  const { addReminder } = useReminder();
 
   const renderMovie = useCallback(() => {
     if (movie == null) {
@@ -140,6 +142,18 @@ export default () => {
           }}>
           <Text style={styles.addToCalendarButtonText}>캘린더에 추가하기</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.addToCalendarButton}
+          onPress={async () => {
+            try {
+              await addReminder(movie.id, movie.releaseDate, movie.title);
+              Alert.alert('알림 등록이 완료되었습니다.');
+            } catch (error: any) {
+              Alert.alert(error.message);
+            }
+          }}>
+          <Text style={styles.addToCalendarButtonText}>알림 추가하기</Text>
+        </TouchableOpacity>
         <Section title="소개">
           {/* children */}
           <Text style={styles.overviewText}>{overview}</Text>
@@ -186,7 +200,7 @@ export default () => {
         </Section>
       </ScrollView>
     );
-  }, [movie]);
+  }, [movie, addReminder]);
 
   return (
     <Screen>
