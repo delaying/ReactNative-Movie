@@ -1,4 +1,4 @@
-package com.delaying.movieapp;
+package com.delaying.moviereminder;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

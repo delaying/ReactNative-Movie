@@ -1,7 +1,9 @@
-package com.delaying.movieapp.newarchitecture;
+package com.delaying.moviereminder.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
+
+import com.delaying.moviereminder.BuildConfig;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -19,9 +21,8 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.delaying.movieapp.BuildConfig;
-import com.delaying.movieapp.newarchitecture.components.MainComponentsRegistry;
-import com.delaying.movieapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.delaying.moviereminder.newarchitecture.components.MainComponentsRegistry;
+import com.delaying.moviereminder.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
