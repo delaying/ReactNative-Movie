@@ -37,7 +37,7 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-  <key>NSCalendarUsageDescription</key>
+  <key>NSCalendarsUsageDescription</key>
   <string>It is used to save release date of movies by user.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
